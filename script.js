@@ -6,6 +6,12 @@ let studentGenerationRate = 1;
 let teacherCost = 500;
 let classroomCost = 1000;
 
+const classroomNames = [
+    "Math Room", "Science Lab", "History Room", "English Room", 
+    "Music Room", "Art Room", "Computer Lab", "Physics Lab", 
+    "Chemistry Lab", "Biology Lab", "Geography Room", "Literature Room"
+];
+
 const fundsElement = document.getElementById('funds');
 const teachersElement = document.getElementById('teachers');
 const studentsElement = document.getElementById('students');
@@ -26,7 +32,8 @@ function loadGame() {
     
     if (savedFunds !== null) funds = parseInt(savedFunds);
     if (savedTeachers !== null) teachers = parseInt(savedTeachers);
-    if (savedStudents !== null) students = parseInt(savedStudents);
+    if (savedStudents
+     !== null) students = parseInt(savedStudents);
     if (savedClassrooms !== null) classrooms = parseInt(savedClassrooms);
     if (savedStudentGenerationRate !== null) studentGenerationRate = parseInt(savedStudentGenerationRate);
     
@@ -85,7 +92,7 @@ function renderClassrooms() {
     for (let i = 0; i < classrooms; i++) {
         const classroom = document.createElement('div');
         classroom.className = 'classroom';
-        classroom.textContent = `Room ${i + 1}`;
+        classroom.textContent = classroomNames[i % classroomNames.length] + ` (${i + 1})`;
         classroomContainer.appendChild(classroom);
     }
 }
